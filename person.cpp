@@ -5,7 +5,7 @@
 using std::cout;
 using std::endl;
 
-Person::Person(char *name, Person* father, Person* mother){
+Person::Person(string name, Person* father, Person* mother){
     this->name = new char[strlen(name)];
     strcpy(this->name, name);
     this->father = father;

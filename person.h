@@ -1,9 +1,13 @@
 #ifndef __PERSON_H__
 #define __PERSON_H__
 
+#include <iostream> //for output
+using namespace std; //for convenience
+
+
 class Person{
     private:
-        char *name;
+        string name; //Change char to string, since names are made of multiple chars
         Person *father; // pointer to the father
         Person *mother; // pointer to the mother
         Person **children; // array of pointers to the kids
@@ -11,10 +15,10 @@ class Person{
         int capacity; // capacity of children array
 
     public:
-        Person(char *name, Person* father, Person* mother);
+        Person(string name, Person* father, Person* mother);
         ~Person();
 
-        const char* getName(){return name;}
+        const string getName(){return name;}
 
         void addChild(Person *newChild);
 

@@ -11,7 +11,7 @@ class PersonList{
     public:
         PersonList();
         ~PersonList();
-        void addPerson(char* child_name, char* father_name, char* mother_name);
+        void addPerson(string child_name, string father_name, string mother_name); //name changed to string
         void insertIntoList(Person *newPerson);
         void printLineage(char* person);
 };
