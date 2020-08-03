@@ -13,6 +13,6 @@ class PersonList{
         ~PersonList();
         void addPerson(string child_name, string father_name, string mother_name); //name changed to string
         void insertIntoList(Person *newPerson);
-        void printLineage(char* person);
+        void printLineage(string personName); //changed to string
 };
 #endif // __PERSONLIST_H__

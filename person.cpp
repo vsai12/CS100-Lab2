@@ -6,8 +6,7 @@ using std::cout;
 using std::endl;
 
 Person::Person(string name, Person* father, Person* mother){
-    this->name = new char[strlen(name)];
-    strcpy(this->name, name);
+    this->name = name;  //changing the char functions to suit string
     this->father = father;
     this->mother = mother;
     capacity = 1;

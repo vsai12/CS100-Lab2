@@ -12,7 +12,13 @@ PersonList::PersonList(){
 }
 
 PersonList::~PersonList(){
-    delete [] theList;
+    //delete[] theList;
+    int i = 0;
+    while(i < numPeople) {
+        cout << theList[i]->getName() << endl;
+        delete theList[i];
+        i++;
+    }
 }
 
 void PersonList::addPerson(string child_name, string father_name, string mother_name){ //name changed to string
@@ -21,12 +27,12 @@ void PersonList::addPerson(string child_name, string father_name, string mother_
     
     // try to find the three names in the theList
     for(int i = 0; i < numPeople; i++){
-        if(!strcmp(theList[i]->getName(), child_name)){
+        if(theList[i]->getName() == child_name){ //change strcmp to reg comparison with str
             cout << "ERROR: " << child_name << " already has parents!!!";
             return;
-        } else if(!strcmp(theList[i]->getName(), father_name)) {
+        } else if(theList[i]->getName() == father_name) { //change strcmp to reg comparison with str
             father = theList[i];
-        } else if(!strcmp(theList[i]->getName(), mother_name)) {
+        } else if(theList[i]->getName() == mother_name) { //change strcmp to reg comparison with str
             mother = theList[i];
         }
     }
@@ -53,13 +59,13 @@ void PersonList::insertIntoList(Person *newPerson){
     theList[numPeople++] = newPerson;
 }
 
-void PersonList::printLineage(char* person){
+void PersonList::printLineage(string personName){ //change to string too
     for(int i = 0; i < numPeople; i++) {
-        if(!strcmp(theList[i]->getName(), person)){
+        if(theList[i]->getName() == personName){ //edited to str compare to find the person and print lineage
             theList[i]->printAncestors();
             theList[i]->printDecendents();
             return;
         }
     }
-    cout << endl << person << " is not in the list!" << endl;
+    cout << endl << personName << " is not in the list!" << endl;
 }
