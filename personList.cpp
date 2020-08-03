@@ -12,13 +12,14 @@ PersonList::PersonList(){
 }
 
 PersonList::~PersonList(){
-    //delete[] theList;
+   // delete[] theList;
+    
     int i = 0;
     while(i < numPeople) {
         delete theList[i];
         i++;
     }
-    delete theList;
+    delete[] theList;
 }
 
 void PersonList::addPerson(string child_name, string father_name, string mother_name){ //name changed to string

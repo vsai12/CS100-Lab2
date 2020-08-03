@@ -16,7 +16,7 @@ Person::Person(string name, Person* father, Person* mother){
 
 
 Person::~Person(){
-    delete children;
+    delete[] children;
 }
 
 void Person::addChild(Person *newChild){
