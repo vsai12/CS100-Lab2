@@ -15,7 +15,12 @@ Person::Person(string name, Person* father, Person* mother){
 }
 
 Person::~Person(){
-    delete children;
+    //delete []children;
+    int i = 0;
+    while(i < numChildren) {
+        delete children[i];
+        i++;
+    }
 }
 
 void Person::addChild(Person *newChild){
@@ -34,7 +39,7 @@ void Person::printDecendents(){
 }
 
 void Person::printLineage(char dir, int level){
-    char *temp = compute_relation(level);
+    string temp = compute_relation(level);
 
     if(dir == 'd'){
         for(int i = 0; i < numChildren; i++){
@@ -57,14 +62,15 @@ void Person::printLineage(char dir, int level){
 * if level = 0 then returns the empty string
 * if level >= 1 then returns ("great ")^(level - 1) + "grand "
 */
-char* Person::compute_relation(int level){
-    if(level == 0) return strcpy(new char[1], "");
+//changed to string since the new chars weren't being deleted
+string Person::compute_relation(int level){
+    if(level == 0) return "";
 
-    char *temp = strcpy(new char[strlen("grand ") + 1], "grand ");;
-    
+    string temp = "grand ";
+
     for(int i = 2; i <= level; i++){
-        char *temp2 = new char[strlen("great ") + strlen(temp) + 1];
-        strcat(strcpy(temp2, "great "), temp);
+        string temp2 = "great ";
+        temp2 += temp;
         temp = temp2;
     }
     return temp;
@@ -73,9 +79,15 @@ char* Person::compute_relation(int level){
 /* non-member function which doubles the size of t
  * NOTE: t's type will be a pointer to an array of pointers
  */
+//add delete temp
 void expand(Person ***t, int *MAX){
   Person **temp = new Person*[2 * *MAX];
   memcpy(temp, *t, *MAX * sizeof(**t));
-  *MAX *= 2;
   *t = temp;
+  int i = 0;
+  while(i < *MAX) {
+        delete temp[i];
+        i++;
+  }
+  *MAX *= 2;
 }

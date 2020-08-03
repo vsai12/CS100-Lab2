@@ -15,7 +15,6 @@ PersonList::~PersonList(){
     //delete[] theList;
     int i = 0;
     while(i < numPeople) {
-        cout << theList[i]->getName() << endl;
         delete theList[i];
         i++;
     }

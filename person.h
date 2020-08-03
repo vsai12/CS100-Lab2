@@ -31,7 +31,7 @@ class Person{
          * if level = 0 then returns the empty string
          * if level >= 1 then returns ("great ")^(level - 1) + "grand "
          */
-        char* compute_relation(int level);
+        string compute_relation(int level);
 };
 /* non-member function which doubles the size of t
  * NOTE: t's type will be a pointer to an array of pointers
