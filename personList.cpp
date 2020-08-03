@@ -53,7 +53,7 @@ void PersonList::addPerson(string child_name, string father_name, string mother_
 }
 
 void PersonList::insertIntoList(Person *newPerson){
-    if(numPeople == capacity) expand(&theList, &capacity);
+    if(numPeople == capacity) expand(&theList, capacity);
 
     theList[numPeople++] = newPerson;
 }

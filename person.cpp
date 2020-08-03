@@ -14,17 +14,12 @@ Person::Person(string name, Person* father, Person* mother){
     children = new Person*[capacity];
 }
 
+
 Person::~Person(){
-    //delete []children;
-    int i = 0;
-    while(i < numChildren) {
-        delete children[i];
-        i++;
-    }
 }
 
 void Person::addChild(Person *newChild){
-    if(numChildren == capacity) expand(&children, &capacity);
+    if(numChildren == capacity) expand(&children, capacity);
     children[numChildren++] = newChild;
 }
 
@@ -80,14 +75,14 @@ string Person::compute_relation(int level){
  * NOTE: t's type will be a pointer to an array of pointers
  */
 //add delete temp
-void expand(Person ***t, int *MAX){
-  Person **temp = new Person*[2 * *MAX];
-  memcpy(temp, *t, *MAX * sizeof(**t));
+void expand(Person ***t, int& MAX){
+  Person **temp = new Person*[2 * MAX];
+  memcpy(temp, *t, MAX * sizeof(**t));
   *t = temp;
-  int i = 0;
-  while(i < *MAX) {
-        delete temp[i];
-        i++;
-  }
-  *MAX *= 2;
+//  int i = 0;
+//  while(i < *MAX) {
+//        delete temp[i];
+//        i++;
+//  }
+  MAX *= 2;
 }

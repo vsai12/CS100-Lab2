@@ -36,6 +36,6 @@ class Person{
 /* non-member function which doubles the size of t
  * NOTE: t's type will be a pointer to an array of pointers
  */
-void expand(Person ***t, int *MAX);
+void expand(Person ***t, int& MAX);
 
 #endif // __PERSON_H__
