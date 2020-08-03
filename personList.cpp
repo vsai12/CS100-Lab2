@@ -18,6 +18,7 @@ PersonList::~PersonList(){
         delete theList[i];
         i++;
     }
+    delete theList;
 }
 
 void PersonList::addPerson(string child_name, string father_name, string mother_name){ //name changed to string
