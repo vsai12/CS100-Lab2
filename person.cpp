@@ -78,6 +78,7 @@ string Person::compute_relation(int level){
 void expand(Person ***t, int& MAX){
   Person **temp = new Person*[2 * MAX];
   memcpy(temp, *t, MAX * sizeof(**t));
+  delete *t;
   *t = temp;
 //  int i = 0;
 //  while(i < *MAX) {
